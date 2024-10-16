@@ -1,9 +1,25 @@
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCNF0La7MIKhrWjbSFqGG9U7ULt9_SgbNY",
-    authDomain: "signalclone-71aca.firebaseapp.com",
-    projectId: "signalclone-71aca",
-    storageBucket: "signalclone-71aca.appspot.com",
-    messagingSenderId: "847662761997",
-    appId: "1:847662761997:web:520cdd4e5239aa80086d44"
-  };
-  
+  apiKey: "AIzaSyBktu0HlL0k8bwC5zYE3ZSQ5ksmxvAWQKQ",
+  authDomain: "signalclone-17.firebaseapp.com",
+  projectId: "signalclone-17",
+  storageBucket: "signalclone-17.appspot.com",
+  messagingSenderId: "445785301844",
+  appId: "1:445785301844:web:236349c1d06532d93c1ec1",
+};
+
+let app;
+
+if (firebase.apps.length === 0) {
+  app = firebase.initializeApp(firebaseConfig);
+} else {
+  app = firebase.app();
+}
+
+const db = app.firestore();
+const auth = firebase.auth();
+
+export { db, auth };

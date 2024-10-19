@@ -41,7 +41,8 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       ),
-      headerRight: () => (
+      headerRight: () => {
+        return (
           <View
             style={{
               flexDirection: "row",
@@ -60,7 +61,8 @@ const HomeScreen = ({ navigation }) => {
               <SimpleLineIcons name="pencil" size={24} color="black" />
             </TouchableOpacity>
           </View>
-      )
+        );
+      }
     });
   }, [navigation]);
 

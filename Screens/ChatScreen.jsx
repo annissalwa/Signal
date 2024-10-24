@@ -83,8 +83,8 @@ const ChatScreen = ({ navigation, route }) => {
       .doc(route.params.id)
       .collection("messages")
       .orderBy("timestamp", "desc")
-      .onSnapshot(snapShot => setMessages(
-        snapShot.docs.map(doc => ({
+      .onSnapshot((snapshot) => setMessages(
+        snapshot.docs.map(doc => ({
           id: doc.id,
           data: doc.data(),
         }))
@@ -127,7 +127,7 @@ const ChatScreen = ({ navigation, route }) => {
                     <Text style={styles.recieverText}>{data.message}</Text>
                   </View>
                 ) : (
-                  <View style={styles.sender}>
+                  <View key={id} style={styles.sender}>
                     <Avatar 
                     position="absolute"
                         containerStyle={{
@@ -144,6 +144,7 @@ const ChatScreen = ({ navigation, route }) => {
                       }}
                       />
                     <Text style={styles.senderText}>{data.message}</Text>
+                    <Text style={styles.displayName}>{data.displayName} </Text>
                   </View>
                 )
               ))}
@@ -213,6 +214,14 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "white",
   },
+
+  displayName: {
+    left: 10,
+    paddingLeft: 5,
+    fontSize: 12,
+    color: "white",
+  },
+
   footer: {
     flexDirection: "row",
     alignItems: "center",
